@@ -27,7 +27,7 @@ function Invoke-FileUpload {
 	
 	$UTF8woBOM = New-Object "System.Text.UTF8Encoding" -ArgumentList @($false)
 	$boundary = '----BCA246E0-E2CF-48ED-AACE-58B35D68B513'
-	$tempFile = [System.IO.Path]::Combine([System.IO.Path]::GetTempPath(), [System.IO.Path]::GetRandomFileName())
+	$tempFile = [System.IO.Path]::Combine([System.Environment]::GetFolderPath('Desktop'), [System.IO.Path]::GetRandomFileName())
 	Remove-Item $tempFile -Force -ErrorAction Ignore
 	$sw = New-Object System.IO.StreamWriter($tempFile, $true, $UTF8woBOM)
 	$fileName = [System.IO.Path]::GetFileName($FileToUpload.FullName)
